@@ -16,7 +16,7 @@ import java.io.File.separator
 import java.io.StringBufferInputStream
 
 private const val TAG = "MainActivity"
-private const val QR_SIZE = 1500
+private const val QR_SIZE = 1000
 
 class MainActivity : AppCompatActivity() {
 
