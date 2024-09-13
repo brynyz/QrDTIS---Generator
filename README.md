@@ -1,5 +1,5 @@
 # QR-based Document Transaction and Information System (QrDTIS)
-**Software Engineering 1 Project**
+## **Software Engineering 1 Project**
 
 **QR Code Generator**
 ## Overview
