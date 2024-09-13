@@ -1,5 +1,5 @@
 # QR-based Document Transaction and Information System (QrDTIS)
-##QR Code Generator
+## QR Code Generator
 
 
 
