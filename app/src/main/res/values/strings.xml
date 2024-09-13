@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="generate">Generate</string>
+    <string name="course_year_sec_bscs_1a_ba">Course/Year/Sec: BSCS-1A-BA</string>
+    <string name="student_num_12_12345">Student Num: 12-12345</string>
+    <string name="name_last_first_middle_initial">Name: Last, First, Middle Initial</string>
+    <string name="generated_qr_code_image">Generated QR Code Image</string>
+</resources>
