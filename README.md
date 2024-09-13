@@ -1,7 +1,9 @@
 # QR-based Document Transaction and Information System (QrDTIS)
 **Software Engineering 1 Project**
 
-**QR Code Generator**
+
+
+#QR Code Generator
 ## Overview
 
 This application is a part of a larger system designed to streamline the purchase process within the university registrar of Isabela State University. The primary function of this application is to generate a QR code that represents a ticket or request form for a purchase (Certificate of Assessment, Certificate of Enrollment, Certificate of Grades, etc.)
