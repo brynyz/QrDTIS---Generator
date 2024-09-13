@@ -12,6 +12,7 @@ import com.example.QrDTIS.databinding.ActivityMainBinding
 import com.google.zxing.BarcodeFormat
 import com.google.zxing.WriterException
 import com.journeyapps.barcodescanner.BarcodeEncoder
+import java.io.File.separator
 import java.io.StringBufferInputStream
 
 private const val TAG = "MainActivity"
@@ -20,7 +21,7 @@ private const val QR_SIZE = 1500
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding //access and manipulate view in layout without findViewById() in other words it makes shi easier
-    private var selectedPurchase: String? = null //class level variable to access the text inside the radio group listener
+    private var selectedPurchases = mutableListOf<String>() //v
 
 
 
@@ -38,27 +39,30 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        //listener for the radio group
-        binding.purchaseOptions.setOnCheckedChangeListener{ group, checkedId -> //lambda function
-
-            //Log.d(TAG, "Checked ID: $checkedId") //more logs still cant fix non null
-            //Log.d(TAG, "Option1 ID: ${R.id.option1}")
-            //Log.d(TAG, "Option2 ID: ${R.id.option2}")
-            //Log.d(TAG, "Option3 ID: ${R.id.option3}")
-
-            val selectedOption = when (checkedId){ //'when' has similar logic to switch cases
-                R.id.option1 -> binding.option1
-                R.id.option2 -> binding.option2
-                R.id.option3 -> binding.option3
-                else -> null
-            }
-
-            selectedOption?.let { //the value will be passed only if a radio group is checked
-                selectedPurchase = it.text.toString() //found the issue, I declared a new variable instead of using the global var
-            }
+        //listeners for the checkboxes
+        binding.option1.setOnCheckedChangeListener {_, isChecked ->
+            handleCheckBox(binding.option1.text.toString(), isChecked)
+        }
+        binding.option2.setOnCheckedChangeListener {_, isChecked ->
+            handleCheckBox(binding.option2.text.toString(), isChecked)
+        }
+        binding.option3.setOnCheckedChangeListener {_, isChecked ->
+            handleCheckBox(binding.option3.text.toString(), isChecked)
+        }
+        binding.option4.setOnCheckedChangeListener {_, isChecked ->
+            handleCheckBox(binding.option4.text.toString(), isChecked)
         }
 
         registerUiListener()
+    }
+
+    //function to handle checkbox lol
+    private fun handleCheckBox(option: String, isChecked: Boolean) {
+        if (isChecked) {
+            selectedPurchases.add(option) //function of mutable list, concatenates another checked option
+        } else{
+            selectedPurchases.remove(option) //another function of mutable list
+        }
     }
 
     private fun registerUiListener() {
@@ -82,7 +86,9 @@ class MainActivity : AppCompatActivity() {
             courseYrSec = binding.courseYearSection.text.toString()
         )
 
-        val studentData = "${userInput.name}|${userInput.idNum}|${userInput.courseYrSec}|${selectedPurchase}" //we concat the data to store separated by a new line
+        val purchases = selectedPurchases.joinToString(separator = ", ") //storing the list of selected purchase separated by ", "
+
+        val studentData = ":${userInput.name}\n:${userInput.idNum}\n:${userInput.courseYrSec}\n:${purchases}" //we concat the data to store separated by a new line
 
         Log.d(TAG, "studentData: $studentData", )
 

@@ -57,41 +57,42 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <!-- Radio buttons for purchase options -->
+    <!-- Checkboxes for purchase options -->
 
-    <RadioGroup
+    <LinearLayout
         android:id="@+id/purchaseOptions"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/courseYearSection"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/generateQrBtn"
+        app:layout_constraintTop_toTopOf="@id/courseYearSection"
         app:layout_constraintVertical_bias="0.5">
 
-        <androidx.appcompat.widget.AppCompatRadioButton
+        <CheckBox
             android:id="@+id/option1"
+            android:text="Certificate 1"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Cert 1"
-            style="@style/Widget.Material3.CompoundButton.CheckBox"/>
+            android:layout_height="wrap_content" />
 
-        <androidx.appcompat.widget.AppCompatRadioButton
+        <CheckBox
             android:id="@+id/option2"
+            android:text="Certificate 2"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Cert 2"
-            style="@style/Widget.Material3.CompoundButton.CheckBox"/>
+            android:layout_height="wrap_content" />
 
-        <androidx.appcompat.widget.AppCompatRadioButton
+        <CheckBox
             android:id="@+id/option3"
+            android:text="Certificate 3"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Cert 3"
-            style="@style/Widget.Material3.CompoundButton.CheckBox"/>
+            android:layout_height="wrap_content" />
 
+        <CheckBox
+            android:id="@+id/option4"
+            android:text="Certificate 4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
-    </RadioGroup>
+    </LinearLayout>
 
     <!-- Button to generate the QR Code, fixed at the very bottom -->
     <Button
