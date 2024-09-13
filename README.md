@@ -1,8 +1,7 @@
 # QR-based Document Transaction and Information System (QrDTIS)
+**Software Engineering 1 Project
+
 **QR Code Generator
-
-
-
 ## Overview
 
 This application is a part of a larger system designed to streamline the purchase process within the university registrar of Isabela State University. The primary function of this application is to generate a QR code that represents a ticket or request form for a purchase (Certificate of Assessment, Certificate of Enrollment, Certificate of Grades, etc.)
@@ -40,9 +39,9 @@ The generated QR code is presented to the cashier, who then processes it using a
 ```bash
 git clone https://github.com/brynyz/QrDTIS---Generator.git
 ```
-2.**Open in Android Studio**: Open the project in Android Studio and build the project to ensure all dependencies are resolved.
+2. **Open in Android Studio**: Open the project in Android Studio and build the project to ensure all dependencies are resolved.
 
-3.**Run the Application**: Connect an Android device or use an emulator to run the application.
+3. **Run the Application**: Connect an Android device or use an emulator to run the application.
 
 ## Contact
 
