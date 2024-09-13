@@ -23,7 +23,7 @@ The generated QR code is presented to the cashier, who then processes it using a
 
 ## Requirements
 
-- **Android Studio**: Development environment for building and running the application.
+- **[Android Studio](https://developer.android.com/studio)**: Development environment for building and running the application.
 - **[ZXing Android Embedded Library](https://github.com/journeyapps/zxing-android-embedded)**: Used for generating QR codes. Include the following dependency in your `build.gradle` file:
 
 
