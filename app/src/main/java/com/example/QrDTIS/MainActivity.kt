@@ -1,5 +1,6 @@
 package com.example.QrDTIS
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
@@ -16,15 +17,11 @@ import java.io.File.separator
 import java.io.StringBufferInputStream
 
 private const val TAG = "MainActivity"
-private const val QR_SIZE = 1000
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding //access and manipulate view in layout without findViewById() in other words it makes shi easier
-    private var selectedPurchases = mutableListOf<String>() //v
-
-
-
+    private var selectedPurchases = mutableListOf<String>() //global variable to store checked checkboxes
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,6 +51,18 @@ class MainActivity : AppCompatActivity() {
         }
 
         registerUiListener()
+
+        //log check if there's value
+        Log.d(TAG, "Value Before Storing: ${binding.idNum.text.toString()}, ${binding.name.text.toString()}, ${binding.courseYearSection.text.toString()}")
+    }
+
+    //need this to to check for empty fields
+    // returns true if one field is empty, false if no fields are empty
+    private fun areFieldsEmpty(): Boolean {
+        return binding.idNum.text.toString().isEmpty() ||
+                binding.name.text.toString().isEmpty() ||
+                binding.courseYearSection.text.toString().isEmpty() ||
+                selectedPurchases.isEmpty()
     }
 
     //function to handle checkbox lol
@@ -87,17 +96,28 @@ class MainActivity : AppCompatActivity() {
         )
 
         val purchases = selectedPurchases.joinToString(separator = ", ") //storing the list of selected purchase separated by ", "
-
         val studentData = ":${userInput.name}\n:${userInput.idNum}\n:${userInput.courseYrSec}\n:${purchases}" //we concat the data to store separated by a new line
 
-        Log.d(TAG, "studentData: $studentData", )
 
-        try {
-            val encoder = BarcodeEncoder() //function from the "qr-generator" library we installed
-            val bitmap = encoder.encodeBitmap(studentData, BarcodeFormat.QR_CODE, QR_SIZE, QR_SIZE) //declaring and encoding the QR code by specifying the data, format and size
-            binding.generatedQrImage.setImageBitmap(bitmap) //we give the "generatedQrImage" the image bitmap
-        }catch (e: WriterException){
-            Log.e(TAG, "generateQrCode: ${e.message}", ) //error logs
+        //error handling, check if field is empty
+        if(areFieldsEmpty()){
+            Toast.makeText(this, "All Fields Must Be Filled", Toast.LENGTH_SHORT).show()
+        }else {
+            //go to QrImageActivity page and send data there
+            startActivity(
+                Intent(this, QrImageActivity::class.java).putExtra(
+                    "studentData",
+                    studentData
+                )
+            )
         }
+        //next page na this:::
+        //try {
+        //    val encoder = BarcodeEncoder() //function from the "qr-generator" library we installed
+        //    val bitmap = encoder.encodeBitmap(studentData, BarcodeFormat.QR_CODE, QR_SIZE, QR_SIZE) //declaring and encoding the QR code by specifying the data, format and size
+        //    binding.generatedQrImage.setImageBitmap(bitmap) //we give the "generatedQrImage" the image bitmap
+        //}catch (e: WriterException){
+         //   Log.e(TAG, "generateQrCode: ${e.message}", ) //error logs
+        // }
     }
 }
