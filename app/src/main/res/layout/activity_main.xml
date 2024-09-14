@@ -8,12 +8,21 @@
     tools:context=".MainActivity">
 
     <!-- EditText for user input, fixed at the bottom above the Button -->
+    <TextView
+        android:id="@+id/inputIndicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:text="@string/enter_details"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@id/name"
+        app:layout_constraintStart_toStartOf="@id/name" />
+
     <EditText
         android:id="@+id/name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="24dp"
-        android:layout_marginBottom="8dp"
         android:hint="@string/name_last_first_middle_initial"
         android:inputType="text"
         app:layout_constraintBottom_toTopOf="@+id/idNum"
@@ -25,7 +34,6 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="24dp"
-        android:layout_marginBottom="8dp"
         android:hint="@string/student_num_12_12345"
         android:inputType="text"
         app:layout_constraintBottom_toTopOf="@+id/courseYearSection"
@@ -37,7 +45,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="24dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="48dp"
         android:hint="@string/course_year_sec_bscs_1a_ba"
         android:inputType="text"
         app:layout_constraintBottom_toTopOf="@+id/purchaseOptions"
@@ -52,32 +60,33 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="@id/generateQrBtn"
-        app:layout_constraintTop_toTopOf="@id/courseYearSection"
+        app:layout_constraintStart_toStartOf="@id/courseYearSection"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.5">
 
         <CheckBox
             android:id="@+id/option1"
-            android:text="Certificate 1"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="Certificate 1" />
 
         <CheckBox
             android:id="@+id/option2"
-            android:text="Certificate 2"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="Certificate 2" />
 
         <CheckBox
             android:id="@+id/option3"
-            android:text="Certificate 3"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="Certificate 3" />
 
         <CheckBox
             android:id="@+id/option4"
-            android:text="Certificate 4"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="Certificate 4" />
 
     </LinearLayout>
 
@@ -86,7 +95,7 @@
         android:id="@+id/generateQrBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="38dp"
         android:text="Generate"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

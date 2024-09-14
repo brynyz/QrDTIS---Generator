@@ -5,4 +5,6 @@
     <string name="student_num_12_12345">Student Num: 12-12345</string>
     <string name="name_last_first_middle_initial">Name: Last, First, Middle Initial</string>
     <string name="generated_qr_code_image">Generated QR Code Image</string>
+    <string name="enter_details">Enter Details:</string>
+    <string name="generate_again">Generate Again</string>
 </resources>
