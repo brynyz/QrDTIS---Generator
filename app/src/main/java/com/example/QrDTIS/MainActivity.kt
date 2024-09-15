@@ -5,11 +5,12 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.AppCompatRadioButton
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.QrDTIS.databinding.ActivityMainBinding
+
 import com.google.zxing.BarcodeFormat
 import com.google.zxing.WriterException
 import com.journeyapps.barcodescanner.BarcodeEncoder
@@ -96,21 +97,38 @@ class MainActivity : AppCompatActivity() {
         )
 
         val purchases = selectedPurchases.joinToString(separator = ", ") //storing the list of selected purchase separated by ", "
-        val studentData = ":${userInput.name}\n:${userInput.idNum}\n:${userInput.courseYrSec}\n:${purchases}" //we concat the data to store separated by a new line
+        val studentData = "Name: ${userInput.name}\nStudent Number: ${userInput.idNum}\nCourse-Year-Section: ${userInput.courseYrSec}\n\nSelected Certificates:\n${purchases}" //we concat the data to store separated by a new line
 
 
         //error handling, check if field is empty
         if(areFieldsEmpty()){
             Toast.makeText(this, "All Fields Must Be Filled", Toast.LENGTH_SHORT).show()
         }else {
-            //go to QrImageActivity page and send data there
-            startActivity(
-                Intent(this, QrImageActivity::class.java).putExtra(
-                    "studentData",
-                    studentData
-                )
-            )
+            //declaring confirm details dialog
+            val alertBuilder = AlertDialog.Builder(this)
+                .setTitle("Are you sure the details are correct?")
+                .setMessage(studentData)
+                .setIcon(android.R.drawable.ic_dialog_info)
+                .setPositiveButton("Yes"){ _, _ ->
+                    //go to QrImageActivity page and send data there
+                    startActivity(
+                        Intent(this, QrImageActivity::class.java).putExtra(
+                            "studentData",
+                            studentData
+                        )
+                    )
+                }
+                .setNegativeButton("No"){ _, _ ->
+                    //i dunno what to put. It does nothing if no is pressed
+                }
+
+            //create confirm dialog
+            val confirmDialog = alertBuilder.create()
+            confirmDialog.setCancelable(false)
+            confirmDialog.show()
+
         }
+
         //next page na this:::
         //try {
         //    val encoder = BarcodeEncoder() //function from the "qr-generator" library we installed
