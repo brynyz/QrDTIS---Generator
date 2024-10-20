@@ -8,51 +8,30 @@
     tools:context=".MainActivity">
 
     <!-- EditText for user input, fixed at the bottom above the Button -->
-    <TextView
-        android:id="@+id/inputIndicator"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
-        android:text="@string/enter_details"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@id/name"
-        app:layout_constraintStart_toStartOf="@id/name" />
 
-    <EditText
-        android:id="@+id/name"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="24dp"
-        android:hint="@string/name_last_first_middle_initial"
-        android:inputType="text"
-        app:layout_constraintBottom_toTopOf="@+id/idNum"
+    <ImageView
+        android:id="@+id/logoImageView"
+        android:layout_width="107dp"
+        android:layout_height="108dp"
+        android:src="@drawable/darktheme"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.059" />
 
     <EditText
         android:id="@+id/idNum"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="24dp"
+        android:layout_marginBottom="4dp"
         android:hint="@string/student_num_12_12345"
         android:inputType="text"
         app:layout_constraintBottom_toTopOf="@+id/courseYearSection"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.062"
         app:layout_constraintStart_toStartOf="parent" />
-
-    <EditText
-        android:id="@+id/courseYearSection"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="24dp"
-        android:layout_marginBottom="48dp"
-        android:hint="@string/course_year_sec_bscs_1a_ba"
-        android:inputType="text"
-        app:layout_constraintBottom_toTopOf="@+id/purchaseOptions"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <!-- Checkboxes for purchase options -->
 
     <LinearLayout
         android:id="@+id/purchaseOptions"
@@ -60,9 +39,9 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="@id/generateQrBtn"
-        app:layout_constraintStart_toStartOf="@id/courseYearSection"
+        app:layout_constraintStart_toStartOf="@+id/courseYearSection"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.5">
+        app:layout_constraintVertical_bias="0.822">
 
         <CheckBox
             android:id="@+id/option1"
@@ -89,6 +68,44 @@
             android:text="Certificate 4" />
 
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/inputIndicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="@string/enter_details"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@id/name"
+        app:layout_constraintStart_toStartOf="@+id/name" />
+
+    <EditText
+        android:id="@+id/name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginBottom="4dp"
+        android:hint="@string/name_last_first_middle_initial"
+        android:inputType="text"
+        app:layout_constraintBottom_toTopOf="@+id/idNum"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.062"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/courseYearSection"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginBottom="44dp"
+        android:hint="@string/course_year_sec_bscs_1a_ba"
+        android:inputType="text"
+        app:layout_constraintBottom_toTopOf="@+id/purchaseOptions"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.062"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- Checkboxes for purchase options -->
 
     <!-- Button to generate the QR Code, fixed at the very bottom -->
     <Button
