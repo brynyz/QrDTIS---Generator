@@ -34,7 +34,7 @@ The generated QR code is presented to the cashier, who then processes it using a
   implementation 'com.journeyapps:zxing-android-embedded:4.3.0'
   ```
 
-## Installation
+## Installing Repository 
 
 1. **Clone the Repository**:
 
